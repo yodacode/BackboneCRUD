@@ -16,42 +16,73 @@
   </head>
   <body>
 
-    <div class="container-fluid">
+
+
+
+        
       
-      <div class="page-header">
-        <h1>CRUD Backbone</h1>
-      </div>
+
+
+
+
+    <div class="page home">
+
+        <div>
+            
+            <br>
+        </div>
       
-      <div class="btn btn-primary pull-right">
-        <i class="icon-plus icon-white"></i> 
-        Ajouter
+      <div class="container-fluid">  
+        <div class="page-header">
+          <h1>CRUD Backbone</h1>
+        </div>
+        
+        <a href="#addClient" role="button" class="btn btn-primary pull-right" data-toggle="modal">
+          <i class="icon-plus icon-white"></i> 
+          Ajouter
+        </a>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody class="listClient">
+          </tbody>
+        </table>
       </div>
 
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <div class="btn btn-mini"><i class="icon-pencil"></i> Modifier</div>
-              <div class="btn btn-mini"><i class="icon-remove"></i> Supprimer</div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
+    <div id="addClient" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Ajouter un Client</h3>
+      </div>
+      <div class="modal-body">
+        <div><input type="text" name="idClient" class="idClient" placeholder="id"/></div>
+        <div><input type="text" name="firstnameClient" class="firstnameClient" placeholder="Firstname"/></div>
+        <div><input type="text" name="nameClient" class="nameClient" placeholder="Name"/></div>
+        
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+        <button class="addClient btn btn-primary">Ajouter Client</button>
+      </div>
     </div>
+
+
+
+    </div><!--end page-->
+
+
+
+    
+     
+    
 
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -61,6 +92,7 @@
     <script src="js/backbone/backbone-min.js"></script>
     <script src="js/backbone/backbone-localstorage.js"></script>
 
-    <script type="js/mustache/mustache.js"></script>
+    <script src="js/mustache/mustache.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,81 @@
+
+
+/*****************************MODEL****************************/
+
+var Client = Backbone.Model.extend({
+	
+	defaults : {
+		id : null,
+		firstname : null,
+		name : null
+	},
+
+	initialize : function() {
+		console.log('initialize client');
+	}
+
+});
+
+var ClientCollection = Backbone.Collection.extend({
+	
+	model : Client,
+	localStorage : new Store('clients'),
+	initialize : function() {
+		console.log('initialize clients collection');
+	}
+	
+});
+
+
+/*****************************VIEW****************************/
+
+var ClientView = Backbone.View.extend({
+	
+	el : $('.page.home'),
+
+	initialize : function(){
+		var self = this;
+
+		//création d'une collection de clients
+		this.listClients = new ClientCollection();
+
+		//Récupération des données dans le localstorage
+		this.listClients.fetch();
+		this.listClients.each(function(c){
+			self.addClientToList(model);
+		});
+
+		//Dés qu'il y a un ajout mise à jour le render
+		this.listClients.bind('add', function(model){
+			self.addClientToList(model);
+		});
+
+
+
+	},
+
+	events : {
+		'click .addClient' : 'cmdAddClient_Click'
+	},
+
+	cmdAddClient_Click : function(){
+		alert('toto');
+		var tmpClient = new Client({
+			id : $('#addClient .idClient').val(),
+			firstname : $('#addClient .firstnameClient').val(),
+			name : $('#addClient .nameClient').val()
+		});
+
+	},
+
+	addClientToList : function(model) {
+		$('tbody').append(
+			'<tr>'+
+				'<td>'+model.id+'</td>'+
+				'<td>'+model.name+'</td>'+
+				'<td>'+model.firstname+'</td>'+
+			'</tr>'
+			);
+	}
+
+});
